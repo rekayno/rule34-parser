@@ -1,53 +1,52 @@
-
-print('''
-
-▄▄▌ ▐ ▄▌ ▄▄▄· .▄▄ ·  ▄ .▄▪  ▄▄▄  ▪      ▄▄▄  ▄• ▄▌▄▄▌  ▄▄▄ .         ▄▄ • ▄▄▄ . ▐ ▄ ▄▄▄ .▄▄▄   ▄▄▄· ▄▄▄▄▄      ▄▄▄  
-██· █▌▐█▐█ ▀█ ▐█ ▀. ██▪▐███ ▀▄ █·██     ▀▄ █·█▪██▌██•  ▀▄.▀·        ▐█ ▀ ▪▀▄.▀·•█▌▐█▀▄.▀·▀▄ █·▐█ ▀█ •██  ▪     ▀▄ █·
-██▪▐█▐▐▌▄█▀▀█ ▄▀▀▀█▄██▀▐█▐█·▐▀▀▄ ▐█·    ▐▀▀▄ █▌▐█▌██▪  ▐▀▀▪▄        ▄█ ▀█▄▐▀▀▪▄▐█▐▐▌▐▀▀▪▄▐▀▀▄ ▄█▀▀█  ▐█.▪ ▄█▀▄ ▐▀▀▄ 
-▐█▌██▐█▌▐█ ▪▐▌▐█▄▪▐███▌▐▀▐█▌▐█•█▌▐█▌    ▐█•█▌▐█▄█▌▐█▌▐▌▐█▄▄▌        ▐█▄▪▐█▐█▄▄▌██▐█▌▐█▄▄▌▐█•█▌▐█ ▪▐▌ ▐█▌·▐█▌.▐▌▐█•█▌
- ▀▀▀▀ ▀▪ ▀  ▀  ▀▀▀▀ ▀▀▀ ·▀▀▀.▀  ▀▀▀▀    .▀  ▀ ▀▀▀ .▀▀▀  ▀▀▀ (34)    ·▀▀▀▀  ▀▀▀ ▀▀ █▪ ▀▀▀ .▀  ▀ ▀  ▀  ▀▀▀  ▀█▄▀▪.▀   
- (путь к выводу указывать в config.json)
- 
-  ''')
-
 import requests, json, wget, os
 
-url = 'https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&tags=PASTETAG&limit=PASTELIMIT&json=1'
+print('''
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣶⣶⣶⣶⣤⡄⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⠉⠉⠉⠉⠉⠙⢢⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢘⡉⢻⡇⠀⠀⠀⠀⠀⠀⠀⠀⢐⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠳⡦⣸⣷⣄⡀⢀⣀⡀⠀⠀⠀⡂⠀⠀- путь к выводу указывать в config.json
+⠀⠀⠀⠀⠀⠀⠀⠀⡊⣿⣿⣿⣿⣯⡩⣉⠹⢷⢦⠁⠀⠀  CTRL + C - останавливает закачку
+⠀⠀⠀⠀⠀⠀⠀⢰⠀⢻⣿⣿⣿⣿⣿⣿⣶⣶⡞⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⡌⠀⠀⢀⠉⠻⣿⣿⣿⣿⣿⡇⠀⠀⠀
+⠀⣀⠠⠤⠐⠚⠱⠀⠀⠀⠈⠀⠀⠀⠉⣻⠛⠋⠀⠀⠀⠀
+⡇⠀⠀⡊⠠⠐⠁⠀⠀⠀⠀⢰⠀⢀⠆⠿⡀⠀⠀⠀⠀⠀
+⡗⠒⠒⠀⠀⠀⠠⠤⢤⡀⠀⢸⠀⠘⠀⠀⢌⠑⢢⠀⠀⠀
+⡇⠠⠀⠀⠀⠀⠀⠀⠀⠀⠑⢺⠀⠐⠀⠀⠂⠀⠀⠉⠒⠢⣄
+⡇⠀⠀⠀⠀⠀⠀⠂⢰⠤⠀⠀⢦⠁⠀⠀⢂⠀⠀⠐⠄⠀⠠⠈⠉⠑⠦⡀
+⡇⠀⡀⢀⠐⡀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠐⠀⠀⠀⠀⠀⠀⠀⠁⠄⠀⠀⠘
+ ''')
 
-def convertFloatToDecimal(f=0.0, precision=2):
-    return ("%." + str(precision) + "f") % f
+def GetPath():
+    f = open('config.json')
+    data = json.load(f)
+    path = data['path']
+    return path
 
-# Input Block
-limit = input('Limit [1 - 1000]: ')
+limit = input('Limit: ')
 tags = input('Tags: ')
-dir_name = input('Folder name: ')
+name = input('Folder name: ')
 
-# Replaced TAGS, LIMIT.
-url_replaced = url.replace('PASTETAG', tags)
-limit_replaced = url_replaced.replace('PASTELIMIT', limit)
+def CreateFolder():
+    EndPath = GetPath() + '/' + name
+    os.makedirs(EndPath, exist_ok=True)
+    return EndPath
 
-# REQUESTS block
-r = requests.get(limit_replaced) # Получает лист
+url = f'https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&tags={tags}&limit={limit}&json=1'
+
+r = requests.get(url)
 somelist = r.json()
 
-# JSON block
-f = open('config.json')
-data = json.load(f)
-path = data['path']
-
-# Path block
-#newPath = path.replace(os.sep, '/')
-endPath = path.replace('REPLACE', dir_name)
-os.makedirs(endPath, exist_ok=True)
-
-# Cicle for
-print('\n')
-
 x = 0
-for element in somelist:
-    wget.download(element['file_url'], endPath)
-    x += 1
+try: # CTRL + C = STOP
+    while True:
+        for element in somelist:
+          count = len(somelist)
+          wget.download(element['file_url'], CreateFolder())
+          x += 1
+          print('  | {}/{}'.format(x, count))
+except KeyboardInterrupt:
+    pass
 
-# Script end
-print('\n')
-print(' Downloaded {} files'.format(x))
+# END
+input('\nDownloaded {} files! Press ENTER to exit.'.format(x))
