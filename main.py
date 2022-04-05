@@ -42,12 +42,11 @@ class Config:
         somelist = r.json()
         x = 0 ; i = 0
         try: 
-            while i != len(somelist):
-                for element in somelist:
-                    count = len(somelist)
-                    wget.download(element['file_url'], self.Folder())
-                    x += 1 ; i += 1
-                    print(f'  | {x}/{count}')
+            for element in somelist:
+                count = len(somelist)
+                wget.download(element['file_url'], self.Folder())
+                x += 1 ; i += 1
+                print(f'  | {x}/{count}')
         except KeyboardInterrupt: # CTRL + C = STOP
             print(f'\nОстановка. Скачано {x}/{count}')
             pass
