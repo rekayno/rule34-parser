@@ -1,4 +1,8 @@
-import requests, promptlib, json, wget, os
+import promptlib
+import requests
+import wget 
+import json 
+import os
 
 print('''
 ▄▄▌ ▐ ▄▌ ▄▄▄· .▄▄ ·  ▄ .▄▪  ▄▄▄  ▪  .▄▄ ·      ▄▄▄· ▄▄▄· ▄▄▄  .▄▄ · ▄▄▄ .▄▄▄  
@@ -7,7 +11,9 @@ print('''
 ▐█▌██▐█▌▐█ ▪▐▌▐█▄▪▐███▌▐▀▐█▌▐█•█▌▐█▌▐█▄▪▐█    ▐█▪·•▐█ ▪▐▌▐█•█▌▐█▄▪▐█▐█▄▄▌▐█•█▌
  ▀▀▀▀ ▀▪ ▀  ▀  ▀▀▀▀ ▀▀▀ ·▀▀▀.▀  ▀▀▀▀ ▀▀▀▀     .▀    ▀  ▀ .▀  ▀ ▀▀▀▀  ▀▀▀ .▀  ▀''')
 
+
 class Parser:
+
     def __init__(self):
     # Checks config file, if not exist create a new one 
         try:
@@ -18,7 +24,6 @@ class Parser:
             print('''
 >>> Config file is not exist.
 >>> Set the path, where folders will be contained.''')
-            f = open(config, 'w+')
             prompter = promptlib.Files()
             dir = prompter.dir()
             data = {'path': dir}
@@ -39,7 +44,8 @@ class Parser:
     def Download(self):
         r = requests.get(url_a)
         somelist = r.json()
-        x = 0 ; i = 0
+        x = 0
+        i = 0
         try: 
             for element in somelist:
                 count = len(somelist)
