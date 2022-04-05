@@ -8,7 +8,6 @@ print('''
  ▀▀▀▀ ▀▪ ▀  ▀  ▀▀▀▀ ▀▀▀ ·▀▀▀.▀  ▀▀▀▀ ▀▀▀▀     .▀    ▀  ▀ .▀  ▀ ▀▀▀▀  ▀▀▀ .▀  ▀''')
 
 class Parser:
-    
     def __init__(self):
     # Checks config file, if not exist create a new one 
         try:
@@ -52,10 +51,10 @@ class Parser:
             pass
 
 if __name__  == '__main__':
-    Config().Path()
+    Parser().Path()
     folder_name = input('\nFolder name: ')
-    Config().Folder()
+    Parser().Folder()
     tags = input('Tags: ')
     limit = input('Limit: ')
     url_a = f'https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&tags={tags}&limit={limit}&json=1'
-    Config().Download()
+    Parser().Download()
