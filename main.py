@@ -7,7 +7,7 @@ print('''
 ▐█▌██▐█▌▐█ ▪▐▌▐█▄▪▐███▌▐▀▐█▌▐█•█▌▐█▌▐█▄▪▐█    ▐█▪·•▐█ ▪▐▌▐█•█▌▐█▄▪▐█▐█▄▄▌▐█•█▌
  ▀▀▀▀ ▀▪ ▀  ▀  ▀▀▀▀ ▀▀▀ ·▀▀▀.▀  ▀▀▀▀ ▀▀▀▀     .▀    ▀  ▀ .▀  ▀ ▀▀▀▀  ▀▀▀ .▀  ▀''')
 
-class Config:
+class Parser:
     
     def __init__(self):
     # Checks config file, if not exist create a new one 
