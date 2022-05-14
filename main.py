@@ -25,11 +25,11 @@ class Parser:
 >>> Config file is not exist.
 >>> Set the path, where folders will be contained.''')
             prompter = promptlib.Files()
-            dir = prompter.dir()
-            data = {'path': dir}
+            directory = prompter.dir()
+            data = {'path': directory}
             with open(config, 'w') as outfile:
                 json.dump(data, outfile)
-                print(f'''>>> Done! {dir}''')
+                print(f'''>>> Done! {directory}''')
 
     def Path(self):
         f = open('config.json')
@@ -50,11 +50,11 @@ class Parser:
             for element in somelist:
                 count = len(somelist)
                 wget.download(element['file_url'], self.Folder())
-                x += 1 ; i += 1
+                x += 1
+                i += 1
                 print(f'  | {x}/{count}')
         except KeyboardInterrupt: # CTRL + C = STOP
             print(f'\nОстановка. Скачано {x}/{count}')
-            pass
 
 if __name__  == '__main__':
     Parser().Path()
