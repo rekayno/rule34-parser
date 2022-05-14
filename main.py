@@ -29,7 +29,7 @@ class Parser:
             data = {'path': directory}
             with open(config, 'w') as outfile:
                 json.dump(data, outfile)
-                print(f'''>>> Done! {dir}''')
+                print(f'''>>> Done! {directory}''')
 
     def Path(self):
         f = open('config.json')
